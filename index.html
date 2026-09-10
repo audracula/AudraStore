@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Unik - Kopi, Kelomang & Boti</title>
+    <!-- Font & Icon Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+
+        /* Header / Navbar */
+        header {
+            background-color: #1e293b;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #38bdf8;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #f59e0b;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            font-size: 1.1rem;
+        }
+
+        /* Tombol Pesan Keren */
+        .btn-wa-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-wa-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        /* Menu Section */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #38bdf8;
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: #1e293b;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #334155;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #38bdf8;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #f8fafc;
+        }
+
+        .card-desc {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #334155;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #f59e0b;
+        }
+
+        .btn-order-item {
+            background-color: #38bdf8;
+            color: #0f172a;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .btn-order-item:hover {
+            background-color: #7dd3fc;
+        }
+
+        /* Floating WhatsApp Button */
+        .floating-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: transform 0.3s;
+            text-decoration: none;
+        }
+
+        .floating-wa:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #020617;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid #1e293b;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">SERBA<span>ADA</span></div>
+        <nav>
+            <a href="#home">Beranda</a>
+            <a href="#menu">Menu</a>
+            <a href="#kontak">Pesanan</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Kopi Berkualitas & Produk Pilihan</h1>
+        <p>Temukan kenikmatan Kopi Robusta asli, keunikan Kelomang hias, dan produk Roti Boti lezat hanya di sini.</p>
+        
+        <!-- Tautan WhatsApp Keren Utama -->
+        <a href="https://wa.me/6288991244955?text=Halo%20Admin,%20saya%20ingin%20memesan%20produk" target="_blank" class="btn-wa-main">
+            <i class="fa-brands fa-whatsapp"></i> Pesan Sekarang (+62 812-3456-7890)
+        </a>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="container" id="menu">
+        <h2 class="section-title">Menu Utama Kami</h2>
+
+        <div class="grid-menu">
+            
+            <!-- Menu 1: Kopi Robusta -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600&auto=format&fit=crop" alt="Kopi Robusta" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">Kopi Robusta Premium</h3>
+                    <p class="card-desc">Biji kopi robusta pilihan dari perkebunan terbaik. Rasa mantap, body tebal, dengan aroma khas yang memikat.</p>
+                    <div class="card-footer">
+                        <span class="price">Rp 45.000 / 250g</span>
+                        <a href="https://wa.me/6288991244955?text=Halo,%20saya%20mau%20pesan%20Kopi%20Robusta" target="_blank" class="btn-order-item">Pesan</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu 2: Kelomang / Keong -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=600&auto=format&fit=crop" alt="Kelomang Hias" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">Kelomang / Keong Hias</h3>
+                    <p class="card-desc">Kelomang hias sehat dengan cangkang unik dan beragam warna/ukuran. Cocok untuk peliharaan yang unik di rumah.</p>
+                    <div class="card-footer">
+                        <span class="price">Rp 15.000 / ekor</span>
+                        <a href="https://wa.me/6288991244955?text=Halo,%20saya%20mau%20pesan%20Kelomang/Keong" target="_blank" class="btn-order-item">Pesan</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu 3: Boti (Asli Pak Amba) -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=600&auto=format&fit=crop" alt="Roti Boti" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">Roti Boti (Roti Maryam/Canai)</h3>
+                    <p class="card-desc">Roti Boti yang renyah di luar, lembut di dalam. Sangat pas dinikmati bersama cangkiran kopi robusta panas.</p>
+                    <div class="card-footer">
+                        <span class="price">Rp 20.000 / porsi</span>
+                        <a href="https://wa.me/6288991244955?text=Halo,%20saya%20mau%20pesan%20Roti%20Boti" target="_blank" class="btn-order-item">Pesan</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Tombol WhatsApp Floating (Melayang di pojok kanan bawah) -->
+    <a href="https://wa.me/6281234567890?text=Halo%20Admin,%20saya%20mau%20tanya-tanya%20menu" class="floating-wa" target="_blank" title="Chat Via WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer id="kontak">
+        <p>&copy; 2026 Toko Serba Ada. Semua Hak Dilindungi.</p>
+        <p>Hubungi Pesanan: <strong>+62 812-3456-7890</strong></p>
+    </footer>
+
+</body>
+</html>
